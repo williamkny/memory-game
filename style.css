@@ -1,0 +1,181 @@
+  body {
+        height: 100vh;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+
+        overflow-x: hidden;
+
+        background-color: var(--white);
+      }
+      :root{
+        --white: #ececec;
+        --turq: #9fd3c7;
+        --navy: #385170;
+        --dark-blue: #142d4c;
+        --red: #780606;
+        --green: #006039;
+      }
+      section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+      }
+      nav {
+        display: flex;
+        justify-content: space-around;
+
+        min-height: 100px;
+
+        background-color: var(--dark-blue);
+
+        width: 100%;
+        display: flex;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        list-style: none;
+
+        font-size: 20px;
+
+        transition: 250ms;
+      }
+      .nav-links li:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+      }
+      .nav-links li, a{
+        padding: 10px;
+        color: var(--white);
+        text-decoration: none;
+      }
+      .logo-container img {
+        height: 75px;
+      }
+      .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .fa-bars {
+        color: var(--white);
+        position: absolute;
+        right: 20px;
+        opacity: 0;
+        top: 35px;
+
+        font-size: 30px;
+      }
+      .fa-bars:hover {
+        cursor: pointer;
+      }
+      .fa-x:hover {
+        cursor: pointer;
+      }
+      .fa-x {
+        color: var(--white);
+        position: absolute;
+        right: 20px;
+        top: 35px;
+        opacity: 0;
+
+        font-size: 30px;
+
+        height: 25px;
+
+        z-index: 3;
+      }
+      .fa-brain{
+        font-size: 46px;
+        color: var(--white);
+      }
+      .fa-bars.active {
+        opacity: 0;
+      }
+      .fa-x.active {
+        opacity: 1;
+      }
+      .nav-links.active{
+        right: 0;
+      }
+   
+      @media (width < 650px) {
+        .fa-bars {
+          opacity: 1;
+          z-index: 3;
+        }
+        nav {
+          justify-content: flex-start;
+        }
+        .nav-links {
+          flex-direction: column;
+
+          position: absolute;
+          right: -170px;
+          top: 55px;
+
+          background-color: var(--white);
+
+        }
+        .logo-container {
+          margin-left: 25px;
+        }
+      }
+      /* NAV END */
+      /* INFO START */
+      .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        text-align: center;
+
+        width: max(90%, 1000px);
+
+        padding: 50px;
+      }
+      p{
+        font-size: 20px;
+      }
+      /* GAME START */
+     
+      
+      /* FOOTER */
+      footer {
+        background-color: var(--dark-blue);
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10vh;
+
+        color: var(--white);
+      }
+
+
+
+
+    .links.active {
+    top: 100px;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    right: 0;
+    left: 0;
+}
+
+.equal.hidden {
+    opacity: 0;
+    z-index: -2;
+}
+
+.x.open {
+    opacity: 1;
+    z-index: 1;
+}
