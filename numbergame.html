@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number-game</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+
+    <style>
+       .game-box{
+        position: relative;
+        background-color: var(--navy);
+        width: 70%;
+        height: 400px;
+
+        padding: 50px;
+
+        display: grid;
+        place-items: center;
+
+        color: var(--white);
+
+        border-radius: 30px;
+
+        box-shadow: 2px 2px 8px var(--dark-blue);
+      }
+      .sequence{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        font-size: 40px;
+
+        transition: 250ms;
+      }
+      .sequence:hover {
+        transform: scale(1.15);
+        cursor: pointer;
+      }
+      .game-box h1 {
+        font-size: 25px;
+      }
+      .active {
+        opacity: 1;
+      }
+      input {
+        opacity: 0;
+        height: 50px;
+        width: 300px;
+
+        text-align: center;
+
+        font-size: 25px;
+
+        border-radius: 20px;
+      }
+      .stats{
+        padding: 50px;
+      }
+
+      /* RESET */
+      .resetBtn{
+        transition: 100ms;
+        font-size: 16px;
+        border: none;
+        background-color: var(--turq);
+        color: var(--dark-blue);
+        padding: 10px;
+        
+        border-top-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+
+        box-shadow: 2px 2px 8px var(--dark-blue);
+
+        position: absolute;
+        left: 10%;
+        bottom: 20px;
+      }
+      .resetBtn:hover{
+        transition: 100ms;
+        transform: scale(1.05);
+        bottom: 20px;
+      }
+      .round{
+        position: absolute;
+        color: var(--dark-blue);
+        background-color: var(--turq);
+        right: 10%;
+        top: 20px;
+
+        font-size: 20px;
+        padding: 10px;
+
+      }
+      .game{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+    </style>
+    
+
+  </head>
+  <body>
+    <section class="header">
+      <nav>
+        <div class="logo-container">
+        <i class="fa-solid fa-brain"></i>
+        </div>
+        <ul class="nav-links">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./numbergame.html">Number-game</a></li>
+          <li><a href="./word-game.html">Word-game</a></li>
+        </ul>
+        <i class="fa-solid fa-bars"></i>
+        <i class="fa-solid fa-x"></i>
+      </nav>
+    </section>
+    <section>
+      <div class="info">
+        <h1>Number-game</h1>
+        <p>
+          In this game, you will be presented a gradually increasing sequence of
+          numbers. You'll have a few seconds to memorize said sequence, and
+          repeat it afterwards.
+        </p>
+        <h1>Good luck!</h1>
+      </div>
+    </section>
+    <section class="game">
+      <div class="game-box">
+        <h1 class="timer">Remember the sequence!</h1>
+        <div class="sequence">Click to start</div>
+        <input type="text" class="input" placeholder="Type the sequence" disabled/>
+        <button class="resetBtn">Reset</button>
+        <p class="round">Round: 0</p>
+      </div>
+       
+    </section>
+    <section>
+      <div class="stats">
+        <h1 class="scoreCounter">Score: 0</h1>
+        <h1 class="highscore">Highscore: 0</h1>
+      </div>
+    </section>
+    <section>
+      <footer>
+        <h2>A GAME BY WILLY</h2>
+      </footer>
+    </section>
+
+    <script>
+      const gameBoxEl = document.querySelector(".game-box")
+      const inputEl = document.querySelector(".input");
+      const sequenceEl = document.querySelector(".sequence");
+      const timerEl = document.querySelector(".timer");
+      const highScoreEl = document.querySelector(".highscore");
+      const scoreEl = document.querySelector(".scoreCounter");
+      const roundEl = document.querySelector(".round")
+
+      let time = null;
+      let seconds = 6;
+
+      let score = 0;
+      let highscore = 0;
+
+      let guessing = false;
+      let allowStart = true;
+
+      let sequence = "";
+
+      let guess = null
+
+      let round = 0
+
+     
+
+      gameBoxEl.addEventListener("click", showNumber);
+
+
+      function showNumber() {
+        
+        gameBoxEl.style.boxShadow = "2px 2px 8px var(--dark-blue)"
+        if (allowStart === true) {
+          if (guess == false){
+            guess = null
+            reset()
+            return
+          }
+          if (time === null) {
+            time = setInterval(startCountdown, 1000);
+          }
+          if (
+            sequenceEl.textContent === "Click to Start" ||
+            sequenceEl.textContent === "Click to proceed"
+          ) {
+            sequenceEl.textContent = "";
+            gameBoxEl.style.backgroundColor = "var(--navy)"
+          }
+          
+          
+          for (let i = 0; i< round+1; i++){
+            let newNumberEl = Math.floor(Math.random() * 10);
+            sequence += newNumberEl;
+          }
+          round++
+
+          sequenceEl.textContent = sequence;
+          allowStart = false;
+          startCountdown();
+        } else {
+          return;
+        }
+      }
+      function startCountdown() {
+        roundEl.innerHTML = "Round: " + round
+        timerEl.style.opacity = "1";
+        seconds -= 1;
+        timerEl.innerHTML = seconds + " Seconds left";
+        if (seconds <= 0) {
+          clearInterval(time);
+          time = null;
+
+          startGuess();
+        }
+      }
+
+
+      function startGuess() {
+        inputEl.disabled = false
+        inputEl.focus()
+
+
+
+        timerEl.innerHTML = "Repeat the sequence!";
+        sequenceEl.style.opacity = "0";
+        inputEl.style.opacity = "1";
+        inputEl.innerHTML = "";
+
+        guessing = true;
+      }
+
+
+      inputEl.addEventListener("keydown", function (event) {
+         const tillatt = ["0","1","2","3","4","5","6","7","8","9","Backspace","Delete", "ArrowLeft", "ArrowRight", "Tab", "Enter"]
+         if (!tillatt.includes(event.key)){
+          event.preventDefault();
+         }
+
+        /* if (event.key === "Enter" && guessing === true && inputEl.value !== "") {
+          guessing = false;
+          checkGuess();
+          
+        } */
+      });
+
+
+      function checkGuess() {
+        if (inputEl.value == sequence) {
+          intermission();
+          score += 1;
+          scoreEl.innerHTML = "Score: " + score;
+        } else {
+          fail();
+        }
+        if (score > highscore) {
+          highscore = score;
+          highScoreEl.innerHTML = "Highscore: " + highscore;
+        }
+      }
+
+
+      function intermission() {
+        inputEl.disabled = true
+        inputEl.style.opacity = "0";
+        timerEl.textContent = "Your guess: " + inputEl.value + " Answer: " + sequence
+        sequence = ""
+        inputEl.value = "";
+
+
+        sequenceEl.style.opacity = "1";
+        sequenceEl.textContent = "Click to proceed";
+        gameBoxEl.style.boxShadow = "2px 2px 8px var(--green)"
+        gameBoxEl.style.backgroundColor = "var(--green)"
+
+        guessing = false;
+        allowStart = true;
+
+        seconds = 5 + score;
+      }
+
+
+      
+
+      function fail(){
+        inputEl.disabled = true
+        round = 1
+        guessing = false;
+        allowStart = true;
+        guess = false
+
+        timerEl.textContent = "Your guess: " + inputEl.value + " Answer: " + sequence
+        sequence = ""
+        sequenceEl.style.opacity = "1";
+        inputEl.style.opacity = "0";
+        inputEl.value = ""
+
+        gameBoxEl.style.backgroundColor = "var(--red)"
+        gameBoxEl.style.boxShadow = "2px 2px 8px var(--red)"
+        sequenceEl.innerHTML = "Wrong answer. New round?"
+      }
+      /* GAME CODE END */
+      
+
+      let enterCooldown = false;
+
+     document.addEventListener("keydown", function(e) {
+      if (e.key !== "Enter") return;
+      if (enterCooldown === true) return;
+
+     enterCooldown = true;
+     setTimeout(() => enterCooldown = false, 400);
+
+     if (guessing === true && inputEl.value !== "") {
+       guessing = false;
+       checkGuess();
+  }  else if (sequenceEl.innerHTML === "Click to proceed" || sequenceEl.innerHTML === "Wrong answer. New round?") {
+      showNumber();
+  }
+});
+
+      const resetBtnEl = document.querySelector(".resetBtn")
+      resetBtnEl.addEventListener("click", function(e){
+        e.stopPropagation()
+        reset()
+      })
+
+  function reset() {
+    clearInterval(time)
+
+        guess = null
+        sequence = "";
+        score = 0;
+        seconds = 5;
+        time = null
+        round = 0
+        allowStart = true
+
+        gameBoxEl.style.backgroundColor = "var(--navy)"
+
+        sequenceEl.innerHTML = "Click to start";
+        gameBoxEl.style.backgroundColor = "var(--navy)"
+        inputEl.style.opacity = "0"
+        timerEl.innerHTML = "Remember the sequence!";
+        scoreEl.innerHTML = "Score: 0";
+        timerEl.style.opacity = "1"
+        inputEl.disabled = true
+
+        roundEl.innerHTML = "Round: "+ round
+      }
+      
+
+      
+    </script>
+  </body>
+</html>

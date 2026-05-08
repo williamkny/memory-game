@@ -1,10 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Number-game</title>
-    <link
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
       integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
@@ -15,244 +15,202 @@
     <script src="script.js" defer></script>
 
     <style>
-       .game-box {
-        background-color: var(--navy);
-        width: 70%;
-        height: 400px;
+        .hero-content img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
 
-        padding: 50px;
+        }
+        .hero{
+            height: 100vh;
+            width: 100%;
+            
+            
+        }
+        .hero-content{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        .title{
+            position: absolute;
+            top: 33%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
 
-        display: grid;
-        place-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
 
-        color: var(--white);
-      }
-      .sequence{
-        display: flex;
-        align-items: center;
-        justify-content: center;
+            height: 80%;
+            
+        }
+        .title h2{
+            color: var(--white);
+            background-color: var(--navy);
+            border-radius: 30px;
+            box-shadow: 2px 2px 8px var(--dark-blue);
+            padding: 10px;
+            font-size:  clamp(16px,5vw,24px);
+        }
+        h1{
+            font-size: clamp(46px,10vw,128px);
+             color: var(--navy);
+        }
+        span{
+            letter-spacing: 15px;
+            color: var(--white);
+        }
+        h2{
+            color: var(--navy);
+            font-size:  clamp(24px,5vw,32px);
+            
+        }
+        @media (width < 650px){
+            .title{
+                justify-content: space-between;
+                top: 35%;
+                height: 60%;
+                width: 100%;
+            }
+            h2{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+              a:hover{
+            background-color: var(--white);
+            border-radius: 30px;
+            color: var(--navy);
+        }
+        }
+         @media (width < 800px){
+            .number-game, .other-game{
+                flex-direction: column;
+            }
+        }
+        /* SECTIONS START */
+        .number-game, .other-game{
+            width: min(1300px, 80%);
+            display: flex;
+            padding: 50px;
+            gap: 20px;
+        }
+        .game-section{
+            display: flex;
+            flex-direction: column;
+            gap: 150px;
+            
+        }
+        .game-section a{
+            color: var(--turq);
 
-        font-size: 40px;
+        }
+        .game-img img{
+            max-width: 100%;
+        }
+        .game-img{
+            display: grid;
+            place-items: center;
+        }
+        .game-info{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
 
-        transition: 250ms;
-      }
-      .sequence:hover {
-        transform: scale(1.15);
-        cursor: pointer;
-      }
-      .game-box h1 {
-        font-size: 25px;
-      }
-      .active {
-        opacity: 1;
-      }
-      input {
-        opacity: 0;
-        border: 2px solid rgb(183, 183, 216);
-        height: 50px;
-        width: 300px;
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 20px;
+            border-radius: 20px;
 
-        text-align: center;
+            box-shadow: 2px 8px 8px var(--dark-blue);
+        }
+        a{
+            display: inline-block;
+            color: var(--white);
+            border-radius: 20px;
+        }
+        h2 a:hover{
+            transition: 100ms;
+            color: var(--dark-blue);
+            background-color: var(--white);
+            transform: scale(1.02);
+           
+            box-shadow: 2px 2px 6px var(--dark-blue);
+        }
+      
+        .number{
+            transform: rotate(300deg);
+        }
+        .other{
+            transform: rotate(110deg);
+        }
+        #other-info h2{
+            text-align: right;
+        }
 
-        font-size: 25px;
-      }
     </style>
-    
-
-  </head>
-  <body>
+</head>
+<body>
     <section class="header">
       <nav>
         <div class="logo-container">
         <i class="fa-solid fa-brain"></i>
         </div>
         <ul class="nav-links">
-          <li><a href="./word-game.html">Word-game</a></li>
-          <li><a href="./index.html">Number-game</a></li>
-          <li>More Games</li>
-          <li>FAQ</li>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./numbergame.html">Number-game</a></li>
+           <li><a href="./word-game.html">Highscores</a></li>
         </ul>
         <i class="fa-solid fa-bars"></i>
         <i class="fa-solid fa-x"></i>
       </nav>
     </section>
     <section>
-      <div class="info">
-        <h1>Number-game</h1>
-        <p>
-          In this game, you will be presented a gradually increasing sequence of
-          numbers. You'll have a few seconds to memorize said sequence, and
-          repeat it afterwards.
-        </p>
-        <h1>Good luck!</h1>
-      </div>
+        <div class="hero">
+                <div class="hero-content">
+                    <img src="./media/Brain Freeze Hero.png" alt="hero">
+                     <div class="title">
+                    <h1>BRAIN<span> FREEZE</span></h1>
+                    <h2>Keep your head cool and your memory cooler</h2>
+                </div>
+            </div>
+        </div>
     </section>
-    <section class="game">
-      <div class="game-box">
-        <h1 class="timer">Remember the sequence!</h1>
-        <div class="sequence">Click to start</div>
-        <input type="text" class="input" />
-      </div>
+    <section class="game-section">
+        <div class="number-game">
+            <div class="game-info">
+                <h2><a href="./numbergame.html">NUMBER GAME</a> <i class="fa-solid fa-arrow-pointer number" style="color: rgb(255, 255, 255);"></i></h2>
+                <p class="more">In this game you can test your memory skills. Increasingly longer sequences of numbers will appear on screen, and your job is to repeat said sequence after some time. The average player remembers 8 numbers, can you do better?</p>
+                <h3 class="learn">LEARN MORE</h3>
+            </div>
+            <div class="game-img">
+                <img src="./media/The thinker.png" alt="">
+            </div>
+        </div>
+        <div class="other-game">
+            <div class="game-img">
+                <img src="./media/Cogs 2-Photoroom.png" alt="">
+            </div>
+            <div class="game-info" id="other-info">
+                <h2><i class="fa-solid fa-arrow-pointer other" style="color: rgb(255, 255, 255);"></i><a href="./word-game.html">HIGHSCORES</a> </h2>
+                <p class="more">Want to compare your results against your peers? Here i will continuiosly update the record holders and their scores. Can you reach the podium? Find out!</p>
+                <h3 class="learn">LEARN MORE</h3>
+            </div>
+            
+        </div>
     </section>
-    <section>
-      <div class="stats">
-        <h1 class="scoreCounter">Score: 0</h1>
-        <h1 class="highscore">Highscore: 0</h1>
-      </div>
-    </section>
+
     <section>
       <footer>
-        <h2>A GAME BY WILLY</h2>
+        <h2 id="footer-text">A PAGE BY WILLY</h2>
       </footer>
     </section>
 
-    <script>
-      const gameBoxEl = document.querySelector(".game-box")
-      const inputEl = document.querySelector(".input");
-      const sequenceEl = document.querySelector(".sequence");
-      const timerEl = document.querySelector(".timer");
-      const highScoreEl = document.querySelector(".highscore");
-      const scoreEl = document.querySelector(".scoreCounter");
-
-      let time = null;
-      let seconds = 6;
-
-      let score = 0;
-      let highscore = 0;
-
-      let guessing = false;
-      let allowStart = true;
-
-      let sequence = "";
-
-      let guess = null
-
-      sequenceEl.addEventListener("click", showNumber);
-
-      function showNumber() {
-        if (allowStart === true) {
-          if (time === null) {
-            time = setInterval(startCountdown, 1000);
-          }
-          if (
-            sequenceEl.textContent === "Click to Start" ||
-            sequenceEl.textContent === "Click to proceed"
-          ) {
-            sequenceEl.textContent = "";
-            gameBoxEl.style.backgroundColor = "var(--navy)"
-          }
-          if (guess == false){
-            guess = null
-            reset()
-          }
-          let newNumberEl = Math.floor(Math.random() * 10);
-          console.log(newNumberEl);
-          console.log(sequenceEl.textContent);
-
-          sequence += newNumberEl;
-          sequenceEl.textContent = sequence;
-
-          allowStart = false;
-          startCountdown();
-        } else {
-          return;
-        }
-      }
-      function startCountdown() {
-        timerEl.style.opacity = "1";
-        seconds -= 1;
-        timerEl.innerHTML = seconds + " Seconds left";
-        if (seconds <= 0) {
-          clearInterval(time);
-          time = null;
-
-          startGuess();
-        }
-      }
-
-
-      function startGuess() {
-        timerEl.innerHTML = "Repeat the sequence!";
-        sequenceEl.style.opacity = "0";
-        inputEl.style.opacity = "1";
-        inputEl.innerHTML = "";
-
-        guessing = true;
-      }
-
-
-      inputEl.addEventListener("keydown", function (event) {
-        if (event.key === "Enter" && guessing === true) {
-          guessing = false;
-          checkGuess();
-          
-        }
-      });
-
-
-      function checkGuess() {
-        if (inputEl.value == sequence) {
-          intermission();
-          score += 1;
-          scoreEl.innerHTML = "Score: " + score;
-        } else {
-          fail();
-        }
-        if (score > highscore) {
-          highscore = score;
-          highScoreEl.innerHTML = "Highscore: " + highscore;
-        }
-      }
-
-
-      function intermission() {
-        inputEl.style.opacity = "0";
-        timerEl.style.opacity = "0";
-        inputEl.value = "";
-
-        sequenceEl.style.opacity = "1";
-        sequenceEl.textContent = "Click to proceed";
-        gameBoxEl.style.backgroundColor = "var(--green)"
-
-        guessing = false;
-        allowStart = true;
-
-        seconds = 5 + score;
-      }
-
-
-      function reset() {
-        
-        sequence = "";
-        score = 0;
-        seconds = 5;
-
-        gameBoxEl.style.backgroundColor = "var(--navy)"
-        
-       
-        sequenceEl.innerHTML = "Start?";
-        timerEl.innerHTML = "Remember the sequence!";
-        scoreEl.innerHTML = "Score: 0";
-        timerEl.style.opacity = "1"
-      }
-
-      function fail(){
-        guessing = false;
-        allowStart = true;
-        guess = false
-
-        sequenceEl.style.opacity = "1";
-        inputEl.style.opacity = "0";
-        inputEl.value = ""
-        timerEl.style.opacity = "0"
-
-        gameBoxEl.style.backgroundColor = "var(--red)"
-        sequenceEl.innerHTML = "Wrong answer. New round?"
-      }
-      /* GAME CODE END */
-      
-
-      
-    </script>
-  </body>
+    
+</body>
 </html>
