@@ -56,6 +56,9 @@
             padding: 10px;
             font-size:  clamp(16px,5vw,24px);
         }
+        a{
+            padding: 5px;
+        }
         h1{
             font-size: clamp(46px,10vw,128px);
              color: var(--navy);
@@ -86,6 +89,9 @@
             border-radius: 30px;
             color: var(--navy);
         }
+        .game-section{
+            gap: 20px;
+        }
         }
          @media (width < 800px){
             .number-game, .other-game{
@@ -115,12 +121,15 @@
         .game-img{
             display: grid;
             place-items: center;
+            flex: 1 1 0;
+            
         }
         .game-info{
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
+             flex: 1 1 0;
 
             background-color: var(--navy);
             color: var(--white);
@@ -148,9 +157,6 @@
         }
         .other{
             transform: rotate(110deg);
-        }
-        #other-info h2{
-            text-align: right;
         }
 
     </style>
@@ -184,8 +190,10 @@
     <section class="game-section">
         <div class="number-game">
             <div class="game-info">
-                <h2><a href="./numbergame.html">NUMBER GAME</a> <i class="fa-solid fa-arrow-pointer number" style="color: rgb(255, 255, 255);"></i></h2>
-                <p class="more">In this game you can test your memory skills. Increasingly longer sequences of numbers will appear on screen, and your job is to repeat said sequence after some time. The average player remembers 8 numbers, can you do better?</p>
+                <div class="content">
+                    <h2><a href="./numbergame.html">NUMBER GAME</a> <i class="fa-solid fa-arrow-pointer number" style="color: rgb(255, 255, 255);"></i></h2>
+                    <p class="more">In this game you can test your memory skills. Increasingly longer sequences of numbers will appear on screen, and your job is to repeat said sequence after some time. The average player remembers 8 numbers, can you do better?</p>
+                </div>
                 <h3 class="learn">LEARN MORE</h3>
             </div>
             <div class="game-img">
@@ -194,11 +202,13 @@
         </div>
         <div class="other-game">
             <div class="game-img">
-                <img src="./media/Cogs 2-Photoroom.png" alt="">
+                <img src="./media/Pall.png" alt="">
             </div>
             <div class="game-info" id="other-info">
-                <h2><i class="fa-solid fa-arrow-pointer other" style="color: rgb(255, 255, 255);"></i><a href="./word-game.html">HIGHSCORES</a> </h2>
-                <p class="more">Want to compare your results against your peers? Here i will continuiosly update the record holders and their scores. Can you reach the podium? Find out!</p>
+                <div class="content">
+                    <h2><i class="fa-solid fa-arrow-pointer other" style="color: rgb(255, 255, 255);"></i><a href="./word-game.html">HIGHSCORES</a> </h2>
+                    <p class="more">Want to compare your results against your peers? Here i will continuiosly update the record holders and their scores. Can you reach the podium? Find out!</p>
+                </div>
                 <h3 class="learn">LEARN MORE</h3>
             </div>
             

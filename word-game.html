@@ -13,7 +13,125 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <script src="script.js" defer></script>
+    <style>
+      .top-3{ 
+        text-align: center;
+        padding: 20px;
+      }
+      h1{
+          font-size: clamp(46px,10vw,128px);
+          color: var(--navy);
+      }
+      p{
+        font-size: min(36px , 3vw);
+        color: var(--dark-blue);
+        font-style: italic;
+        padding-bottom: 20px;
 
+      }
+      .pall{
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 20px;
+
+      }
+      .plass-container-gold{
+        grid-column: 3/7;
+        display: flex;
+        flex-direction: column;
+       
+      }
+      .plass-container-silver{
+        grid-column: 1/3;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      .plass-container-bronze{
+        grid-column: 7/9;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      .plass{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size: min(20px, 5vw);
+        padding: 10px;
+      }
+      .gold{
+        background-color: var(--gold);
+        height: 500px;
+         box-shadow: 0px 4px 8px black;
+      }
+      .silver{
+        background-color: var(--silver);
+        height: 400px;
+         box-shadow: -4px 4px 8px black;
+      }
+      .bronze{
+         background-color: var(--bronze);
+         height: 300px;
+         box-shadow: 4px 4px 8px black;
+      }
+      /* RESTEN */
+      .therest{
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      ol{
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        background-color: var(--dark-blue);
+        border-radius: 20px;
+        box-shadow: 2px 2px 8px var(--navy);
+
+        max-height: 0px;
+        transition: 500ms;
+      }
+      .active{
+        display: flex;
+        transition: 500ms;
+        max-height: 3000px;
+      }
+      ol li{
+        font-size: min(20px, 5vw);
+        color: var(--white);
+        padding: 20px;
+        
+      }
+      .contestant{
+        display: flex;
+        gap: 55px;
+        justify-content: space-between;
+      }
+      .viewMoreBtn:hover{
+        cursor: pointer;
+        transform: scale(1.05);
+        transition: 100ms;
+        background-color: var(--white);
+        color: var(--dark-blue);
+
+      }
+      .viewMoreBtn{
+        font-size: min(24px, 5vw);
+        max-width: 180px;
+        border: none;
+        background-color: var(--navy);
+        color: var(--white);
+        padding: 10px;
+        border-radius: 20px;
+
+        box-shadow: 2px 2px 8px black;
+      }
+    </style>
 </head>
 <body>
        <section class="header">
@@ -24,34 +142,87 @@
         <ul class="nav-links">
           <li><a href="./index.html">Home</a></li>
           <li><a href="./numbergame.html">Number-game</a></li>
-           <li><a href="./word-game.html">Word-game</a></li>
+           <li><a href="./word-game.html">Highscores</a></li>
         </ul>
         <i class="fa-solid fa-bars"></i>
         <i class="fa-solid fa-x"></i>
       </nav>
     </section>
     <section>
-      <div class="info">
-        <h1>Word-game</h1>
-        <h2>
-          In this game, you will be presented different words from a list. If you see a new word, press "New word", and if you've seen the word before press "Seen before"
-        </h2>
-        <h1>Good luck!</h1>
-      </div>
-    </section>
-    <section class="game">
-      <div class="game-box">
-        <h1 class="question">Remember the words!</h1>
-        <div class="word">Start?</div>
-        <button class="seen">New word</button>
-        <button class="notSeen">Seen before</button>
+      <div class="top-3">
+        <h1>MASTERMINDS</h1>
+        <p>a true measure of intellect</p>
+        <div class="pall">
+          <div class="plass-container-silver">
+            <div class="silver plass">
+              <h2>Johan Golden</h2>
+              <h3>Score: 12</h3>
+            </div>
+          </div>
+          <div class="plass-container-gold">
+            <div class="gold plass">
+              <h2>Mette Marit</h2>
+              <h3>Score: 15</h3>
+            </div>
+          </div>
+          <div class="plass-container-bronze">
+            <div class="bronze plass">
+              <h2>Hanta viruset</h2>
+              <h3>Score: 11</h3>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
     <section>
-      <div class="stats">
-        <h1 class="scoreCounter">Score: 0</h1>
-        <h1 class="highscore">Highscore: 0</h1>
+      <div class="therest">
+        <ol start="4" class="list">
+          <li>
+            <div class="contestant">
+              <div>Xi Jinping</div>
+              <div> Score: 10</div>
+            </div>
+          </li>
+          <li>
+            <div class="contestant">
+              <div>Micheal Myers</div>
+              <div> Score: 9</div>
+            </div>
+          </li>
+          <li>
+            <div class="contestant">
+              <div>Erna Solberg</div>
+              <div> Score: 9</div>
+            </div>
+          </li>
+          <li>
+            <div class="contestant">
+              <div>Mahatma Gandhi</div>
+              <div> Score: 8</div>
+            </div>
+          </li>
+          <li>
+            <div class="contestant">
+              <div>Marius Borg Høyby</div>
+              <div> Score: 8</div>
+            </div>
+          </li>
+          <li>
+            <div class="contestant">
+              <div>Jesus</div>
+              <div> Score: 6</div>
+            </div>
+          </li>
+          <li>
+            <div class="contestant">
+              <div>Taue Bill</div>
+              <div> Score: 5</div>
+            </div>
+          </li>
+        </ol>
+        <button class="viewMoreBtn">VIEW MORE</button>
       </div>
+      
     </section>
     <section>
       <footer>
@@ -59,8 +230,20 @@
       </footer>
     </section>
 
-    <script src="script.js">
-        const wordsEl = [Apple, Green, Mofo, Shibuya, ]
+    <script>
+      const playerListEl = document.querySelector(".list")
+      const viewBtn = document.querySelector(".viewMoreBtn")
+
+      viewBtn.addEventListener("click", function(){
+        playerListEl.classList.toggle("active")
+        
+          if (playerListEl.classList.contains("active")){
+          viewBtn.innerHTML = "VIEW LESS"
+        }
+        else{
+          viewBtn.innerHTML = "VIEW MORE"
+        }
+      })
     </script>
 </body>
 </html>
