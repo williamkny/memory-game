@@ -56,9 +56,6 @@
             padding: 10px;
             font-size:  clamp(16px,5vw,24px);
         }
-        a{
-            padding: 5px;
-        }
         h1{
             font-size: clamp(46px,10vw,128px);
              color: var(--navy);
@@ -70,6 +67,7 @@
         h2{
             color: var(--navy);
             font-size:  clamp(24px,5vw,32px);
+            
             
         }
         @media (width < 650px){
@@ -143,6 +141,9 @@
             color: var(--white);
             border-radius: 20px;
         }
+        .game-info a{
+            padding: 5px;
+        }
         h2 a:hover{
             transition: 100ms;
             color: var(--dark-blue);
@@ -158,6 +159,7 @@
         .other{
             transform: rotate(110deg);
         }
+        
 
     </style>
 </head>
@@ -190,11 +192,8 @@
     <section class="game-section">
         <div class="number-game">
             <div class="game-info">
-                <div class="content">
-                    <h2><a href="./numbergame.html">NUMBER GAME</a> <i class="fa-solid fa-arrow-pointer number" style="color: rgb(255, 255, 255);"></i></h2>
-                    <p class="more">In this game you can test your memory skills. Increasingly longer sequences of numbers will appear on screen, and your job is to repeat said sequence after some time. The average player remembers 8 numbers, can you do better?</p>
-                </div>
-                <h3 class="learn">LEARN MORE</h3>
+                <h2><a href="./numbergame.html">NUMBER GAME</a> <i class="fa-solid fa-arrow-pointer number" style="color: rgb(255, 255, 255);"></i></h2>
+                <p class="more">In this game you can test your memory skills. Increasingly longer sequences of numbers will appear on screen, and your job is to repeat said sequence after some time. The average player remembers 8 numbers, can you do better?</p>
             </div>
             <div class="game-img">
                 <img src="./media/The thinker.png" alt="">
@@ -205,11 +204,8 @@
                 <img src="./media/Pall.png" alt="">
             </div>
             <div class="game-info" id="other-info">
-                <div class="content">
-                    <h2><i class="fa-solid fa-arrow-pointer other" style="color: rgb(255, 255, 255);"></i><a href="./word-game.html">HIGHSCORES</a> </h2>
-                    <p class="more">Want to compare your results against your peers? Here i will continuiosly update the record holders and their scores. Can you reach the podium? Find out!</p>
-                </div>
-                <h3 class="learn">LEARN MORE</h3>
+                <h2><i class="fa-solid fa-arrow-pointer other" style="color: rgb(255, 255, 255);"></i><a href="./word-game.html">HIGHSCORES</a> </h2>
+                <p class="more">Want to compare your results against your peers? Here i will continuiosly update the record holders and their scores. Can you reach the podium? Find out!</p>
             </div>
             
         </div>
@@ -220,7 +216,5 @@
         <h2 id="footer-text">A PAGE BY WILLY</h2>
       </footer>
     </section>
-
-    
 </body>
 </html>

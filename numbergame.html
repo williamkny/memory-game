@@ -76,8 +76,7 @@
         color: var(--dark-blue);
         padding: 10px;
         
-        border-top-left-radius: 20px;
-        border-bottom-right-radius: 20px;
+        border-radius: 10px;
 
         box-shadow: 2px 2px 8px var(--dark-blue);
 
@@ -99,6 +98,8 @@
 
         font-size: 20px;
         padding: 10px;
+
+        border-radius: 10px;
 
       }
       .game{
@@ -189,7 +190,7 @@
       /* SJEKKER OM DU HAR GJETTET NOE, OM DET IKKE ER TIMERE I VEIEN, 
       RESETTER FARGER,BESTEMMER SEKVENS, */
       function showNumber() {
-        
+        gameBoxEl.style.backgroundColor = "var(--navy)"
         gameBoxEl.style.boxShadow = "2px 2px 8px var(--dark-blue)"
         if (allowStart === true) {
           if (guess == false){
@@ -200,15 +201,8 @@
           if (time === null) {
             time = setInterval(startCountdown, 1000);
           }
-          if (
-            sequenceEl.textContent === "Click to Start" ||
-            sequenceEl.textContent === "Click to proceed"
-          ) {
-            sequenceEl.textContent = "";
-            gameBoxEl.style.backgroundColor = "var(--navy)"
-          }
           
-          
+          /* GENERERER TILFELDIGE TALL */
           for (let i = 0; i< round+1; i++){
             let newNumberEl = Math.floor(Math.random() * 10);
             sequence += newNumberEl;
@@ -217,7 +211,7 @@
 
           sequenceEl.textContent = sequence;
           allowStart = false;
-          startCountdown();
+          startCountdown(); /* STARTER GJETTEFASEN OG NEDTELLING */
         } else {
           return;
         }
@@ -276,6 +270,7 @@
       /* OM DU FÅR RIKTIG - ENDRER SKJERM, ØKER TID, ENDRER STATUSER */
       function intermission() {
         inputEl.disabled = true
+        
         inputEl.style.opacity = "0";
         timerEl.textContent = "Your guess: " + inputEl.value + " Answer: " + sequence
         sequence = ""
@@ -290,7 +285,7 @@
         guessing = false;
         allowStart = true;
 
-        seconds = 5 + score;
+        seconds = 6 + score;
       }
 
 
@@ -320,11 +315,6 @@
 
      document.addEventListener("keydown", function(e) {
       if (e.key !== "Enter") return;
-      if (enterCooldown === true) return;
-
-     enterCooldown = true;
-     setTimeout(() => enterCooldown = false, 400);
-
      if (guessing === true && inputEl.value !== "") {
        guessing = false;
        checkGuess();
@@ -339,12 +329,14 @@
   }
 });
 
+/* DENNE KNAPPEN RESETTER SIDEN */
       const resetBtnEl = document.querySelector(".resetBtn")
       resetBtnEl.addEventListener("click", function(e){
         e.stopPropagation()
         reset()
       })
 
+/* RESETTER SIDEN; OM DU TAPER OG OM DU FRIVILLIG RESETTER */
   function reset() {
     clearInterval(time)
 
